@@ -1,0 +1,16 @@
+{
+  "currency": "GTQ",
+  "feePct": 4,
+  "marginPct": 10,
+  "packages": [
+    { "id": "d110", "name": "110 Diamantes", "cost": 7.98 },
+    { "id": "d341", "name": "341 Diamantes", "cost": 22.68 },
+    { "id": "d572", "name": "572 Diamantes", "cost": 37.82, "tag": "Más pedido" },
+    { "id": "d1166", "name": "1166 Diamantes", "cost": 70.31 },
+    { "id": "d2398", "name": "2398 Diamantes", "cost": 139.5 },
+    { "id": "d6160", "name": "6160 Diamantes", "cost": 354.86 },
+    { "id": "booyah", "name": "Pase Booyah", "cost": 35.46 },
+    { "id": "semanal", "name": "Tarjeta Semanal", "cost": 0, "active": false },
+    { "id": "mensual", "name": "Tarjeta Mensual", "cost": 110.33 }
+  ]
+}
