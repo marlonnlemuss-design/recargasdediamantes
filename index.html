@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brillo GT · Diamantes Free Fire en Guatemala</title>
+<style>
+:root{--bg:#15101f;--card:#211a33;--line:#3a2f55;--tx:#f3eefc;--mute:#a79bc4;--ac:#ff5a8a;--gem:#5ee1ff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 "Trebuchet MS",system-ui,sans-serif;padding-bottom:96px}
+header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+header b{font-size:20px;letter-spacing:.5px}
+main{max-width:640px;margin:0 auto;padding:16px}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;color:var(--mute);font-size:14px;margin-bottom:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
+h2{margin:0 0 12px;font-size:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pk{background:var(--bg);border:2px solid var(--line);border-radius:12px;padding:14px 8px;color:var(--tx);cursor:pointer;text-align:center;font:inherit;position:relative}
+.pk svg{width:34px;height:34px;display:block;margin:0 auto 6px}
+.pk span{display:block;font-weight:700}
+.pk em{font-style:normal;color:var(--ac);font-weight:700}
+.pk.on{border-color:var(--ac);background:#2c1f40}
+.pk i{position:absolute;top:-9px;right:8px;background:var(--ac);color:#fff;font-size:11px;font-style:normal;padding:1px 8px;border-radius:99px}
+label{display:block;margin:10px 0 4px;color:var(--mute);font-size:14px}
+input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;color:var(--tx);font:inherit}
+input:focus,button:focus-visible,a:focus-visible{outline:2px solid var(--gem);outline-offset:2px}
+.err{color:#ff8a8a;font-size:13px;min-height:18px}
+.qty{display:flex;align-items:center;gap:14px;margin-top:14px}
+.qty button{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--tx);font-size:20px;cursor:pointer}
+.row{display:flex;justify-content:space-between;padding:4px 0}
+a{color:var(--gem)}
+footer{max-width:640px;margin:0 auto;padding:0 16px 24px;color:var(--mute);font-size:13px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#0e0a16;border-top:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.bar b{font-size:20px}
+#pay{background:var(--ac);color:#fff;border:0;border-radius:12px;padding:14px 22px;font:700 16px inherit;cursor:pointer}
+#pay:disabled{opacity:.45;cursor:not-allowed}
+.wa{position:fixed;right:14px;bottom:84px;background:#25d366;color:#06361a;border-radius:99px;padding:10px 14px;font-weight:700;text-decoration:none}
+dialog{background:var(--card);color:var(--tx);border:1px solid var(--line);border-radius:14px;max-width:520px}
+dialog::backdrop{background:#000a}
+.msg{padding:12px;border-radius:10px;margin-bottom:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path d="M6 12 11 5h10l5 7-10 15z" fill="#5ee1ff"/><path d="M6 12h20M11 5l5 22M21 5l-5 22" stroke="#15101f" stroke-width="1.5" fill="none"/></svg>
+  <b>Brillo GT</b>
+</header>
+<main>
+  <div id="notice"></div>
+  <div class="badge">🌎 Canjeable solo en Guatemala · Revendedor independiente, no afiliado a Garena ni a Free Fire.</div>
+
+  <section>
+    <h2>1. Elige tu paquete</h2>
+    <div class="grid" id="pkgs" role="radiogroup" aria-label="Paquetes"></div>
+    <div class="qty">
+      <span>Cantidad</span>
+      <button type="button" id="minus" aria-label="Menos">−</button>
+      <b id="q">1</b>
+      <button type="button" id="plus" aria-label="Más">+</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Ingresa tu ID de jugador</h2>
+    <label for="pid">ID de Free Fire (solo números, 6 a 15 dígitos)</label>
+    <input id="pid" inputmode="numeric" autocomplete="off" placeholder="Ejemplo: 123456789">
+    <div class="err" id="pidErr"></div>
+    <a href="#" id="help">¿Dónde encuentro mi ID?</a>
+  </section>
+
+  <section>
+    <h2>3. Resumen y pago</h2>
+    <label for="nm">Nombre</label><input id="nm" autocomplete="given-name">
+    <label for="ln">Apellido</label><input id="ln" autocomplete="family-name">
+    <label for="em">Email</label><input id="em" type="email" autocomplete="email">
+    <div class="err" id="formErr"></div>
+    <div class="row"><span id="sumTxt">Sin paquete</span><b id="sumTot">Q0.00</b></div>
+    <p style="color:var(--mute);font-size:13px;margin:8px 0 0">🔒 Pagarás con crédito o débito en la página segura de nuestro procesador de pagos. Nunca vemos ni guardamos los datos de tu tarjeta.</p>
+  </section>
+</main>
+<footer>
+  <a href="#" data-d="terms">Términos y condiciones</a> · <a href="#" data-d="refund">Política de reembolsos</a>
+</footer>
+
+<a class="wa" href="https://wa.me/50200000000" target="_blank" rel="noopener">WhatsApp</a>
+<div class="bar"><div><small style="color:var(--mute)">Total</small><br><b id="barTot">Q0.00</b></div><button id="pay" disabled>Pagar</button></div>
+
+<dialog id="d-help"><h2>Tu ID de jugador</h2><p>Abre Free Fire, toca tu foto de perfil arriba a la izquierda y copia el número que aparece bajo tu nombre.</p><form method="dialog"><button>Cerrar</button></form></dialog>
+<dialog id="d-terms"><h2>Términos y condiciones</h2><p>Brillo GT es un revendedor independiente y no está afiliado a Garena. Las recargas se entregan al ID que indiques; verifica que sea correcto. Solo funcionan en cuentas de Guatemala. La entrega es manual y puede tardar unos minutos. Reemplaza este texto con tus términos legales completos.</p><form method="dialog"><button>Cerrar</button></form></dialog>
+<dialog id="d-refund"><h2>Política de reembolsos</h2><p>Si no entregamos tu pedido, te lo reembolsamos. Una vez entregada la recarga no hay reembolsos, ni por ID mal escrito. Escríbenos por WhatsApp con tu correo y el ID. Ajusta esta política antes de publicar.</p><form method="dialog"><button>Cerrar</button></form></dialog>
+
+<script>
+const $ = id => document.getElementById(id), fmt = n => 'Q' + n.toFixed(2);
+let pkgs = [], sel = null, qty = 1;
+const gem = '<svg viewBox="0 0 32 32"><path d="M6 12 11 5h10l5 7-10 15z" fill="#5ee1ff"/><path d="M6 12h20M11 5l5 22M21 5l-5 22" stroke="#15101f" stroke-width="1.2" fill="none"/></svg>';
+
+fetch('/api/packages').then(r => r.json()).then(list => {
+  pkgs = list;
+  $('pkgs').innerHTML = list.map(p => `<button type="button" class="pk" role="radio" aria-checked="false" data-id="${p.id}">${p.tag ? `<i>${p.tag}</i>` : ''}${gem}<span>${p.name}</span><em>${fmt(p.price)}</em></button>`).join('');
+  $('pkgs').onclick = e => {
+    const b = e.target.closest('.pk'); if (!b) return;
+    sel = pkgs.find(p => p.id === b.dataset.id);
+    document.querySelectorAll('.pk').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', x === b) });
+    update();
+  };
+}).catch(() => $('notice').innerHTML = '<div class="msg" style="background:#4a1f2a">No se pudieron cargar los paquetes. Recarga la página.</div>');
+
+const idOk = () => /^\d{6,15}$/.test($('pid').value);
+function update() {
+  $('q').textContent = qty;
+  const t = sel ? sel.price * qty : 0;
+  $('sumTxt').textContent = sel ? `${qty} × ${sel.name}` : 'Sin paquete';
+  $('sumTot').textContent = $('barTot').textContent = fmt(t);
+  $('pay').disabled = !(sel && idOk());
+}
+$('minus').onclick = () => { qty = Math.max(1, qty - 1); update() };
+$('plus').onclick = () => { qty = Math.min(10, qty + 1); update() };
+$('pid').oninput = e => {
+  e.target.value = e.target.value.replace(/\D/g, '').slice(0, 15);
+  $('pidErr').textContent = e.target.value && !idOk() ? 'El ID debe tener entre 6 y 15 dígitos.' : '';
+  update();
+};
+$('help').onclick = e => { e.preventDefault(); $('d-help').showModal() };
+document.querySelectorAll('[data-d]').forEach(a => a.onclick = e => { e.preventDefault(); $('d-' + a.dataset.d).showModal() });
+
+$('pay').onclick = async () => {
+  const body = { pkg: sel.id, qty, playerId: $('pid').value, name: $('nm').value.trim(), lastName: $('ln').value.trim(), email: $('em').value.trim() };
+  if (!body.name || !body.lastName || !/^\S+@\S+\.\S+$/.test(body.email)) { $('formErr').textContent = 'Completa nombre, apellido y un email válido.'; return }
+  $('formErr').textContent = ''; $('pay').disabled = true; $('pay').textContent = 'Redirigiendo…';
+  try {
+    const r = await fetch('/api/checkout', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error);
+    location.href = d.url;
+  } catch (e) { $('formErr').textContent = e.message || 'No se pudo iniciar el pago. Intenta de nuevo.'; $('pay').textContent = 'Pagar'; update() }
+};
+
+const u = new URLSearchParams(location.search);
+if (u.get('ok')) $('notice').innerHTML = '<div class="msg" style="background:#16402c">¡Pago recibido! Te enviamos un email y recargaremos tus diamantes en unos minutos.</div>';
+if (u.get('cancel')) $('notice').innerHTML = '<div class="msg" style="background:#4a3a1a">El pago fue cancelado. No se te cobró nada.</div>';
+</script>
+</body>
+</html>
